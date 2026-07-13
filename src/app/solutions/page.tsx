@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Check, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Check, ArrowRight, ExternalLink } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -34,7 +35,7 @@ export default function SolutionsPage() {
           {PRODUCTS.map((product, idx) => (
             <Reveal key={product.id}>
               <section id={product.id} className="scroll-mt-28">
-                <GlassCard strong className="relative overflow-hidden">
+                <GlassCard strong className="relative overflow-hidden transition-all hover:scale-[1.01] hover:border-accent/40">
                   <GradientOrb
                     className={idx % 2 === 0 ? "-left-20 -top-20" : "-right-20 -top-20"}
                     from={idx % 2 === 0 ? "#00D4FF" : "#7B2FFF"}
@@ -73,11 +74,21 @@ export default function SolutionsPage() {
                         ))}
                       </div>
 
-                      <div className="mt-7">
+                      <div className="mt-7 flex flex-wrap items-center gap-4">
+                        {/* ✅ Button – सीधे /contact पर जाएगा, कोई onClick नहीं */}
                         <Button href="/contact">
                           Request a Demo
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
+
+                        {/* ✅ "View Details" Link – Card के detail page पर जाएगा */}
+                        <Link
+                          href={`/solutions/${product.slug}`}
+                          className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+                        >
+                          View Details
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </Link>
                       </div>
                     </div>
 
@@ -97,7 +108,6 @@ export default function SolutionsPage() {
                         ))}
                       </ul>
 
-                      {/* architecture diagram placeholder */}
                       <div className="mt-7 rounded-xl border border-line bg-ink/40 p-5">
                         <div className="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
                           Reference Architecture
@@ -116,7 +126,7 @@ export default function SolutionsPage() {
   );
 }
 
-/** Lightweight SVG architecture diagram (ingest → process → serve). */
+/** Lightweight SVG architecture diagram */
 function ArchitectureDiagram() {
   const layers = [
     { label: "Data Sources", nodes: ["APIs", "Events", "Batch"] },

@@ -47,6 +47,7 @@ export type NavItem = {
   children?: NavChild[];
 };
 
+
 export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -54,22 +55,22 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Services",
     href: "/services",
     children: [
-      { label: "BSS/OSS Solutions", href: "/services#bss-oss", description: "Billing, rating, charging & mediation.", icon: "Network" },
-      { label: "CRM Platforms", href: "/services#crm", description: "AI-enhanced customer management.", icon: "Users" },
-      { label: "Digital Transformation", href: "/services#digital", description: "Modernize legacy systems.", icon: "RefreshCw" },
-      { label: "AI & Machine Learning", href: "/services#ai-ml", description: "Predictive analytics & automation.", icon: "BrainCircuit" },
-      { label: "Cloud & DevOps", href: "/services#cloud", description: "Scalable infra & CI/CD.", icon: "Cloud" },
-      { label: "Custom Software", href: "/services#custom", description: "Bespoke enterprise apps.", icon: "Code2" },
+      { label: "BSS/OSS Solutions", href: "/services/bss-oss", description: "Billing, rating, charging & mediation.", icon: "Network" },
+      { label: "CRM Platforms", href: "/services/crm", description: "AI-enhanced customer management.", icon: "Users" },
+      { label: "Digital Transformation", href: "/services/digital", description: "Modernize legacy systems.", icon: "RefreshCw" },
+      { label: "AI & Machine Learning", href: "/services/ai-ml", description: "Predictive analytics & automation.", icon: "BrainCircuit" },
+      { label: "Cloud & DevOps", href: "/services/cloud", description: "Scalable infra & CI/CD.", icon: "Cloud" },
+      { label: "Custom Software", href: "/services/custom", description: "Bespoke enterprise apps.", icon: "Code2" },
     ],
   },
   {
     label: "Solutions",
     href: "/solutions",
     children: [
-      { label: "PMRG BSS Suite", href: "/solutions#bss-suite", description: "Unified billing & revenue management.", icon: "Receipt" },
-      { label: "PMRG CRM360", href: "/solutions#crm360", description: "AI-powered customer engagement.", icon: "Contact" },
-      { label: "PMRG CloudOps", href: "/solutions#cloudops", description: "Infrastructure automation & monitoring.", icon: "Server" },
-      { label: "PMRG DataIntel", href: "/solutions#dataintel", description: "Business intelligence & analytics.", icon: "BarChart3" },
+      { label: "PMRG BSS Suite", href: "/solutions/bss-suite", description: "Unified billing & revenue management.", icon: "Receipt" },
+      { label: "PMRG CRM360", href: "/solutions/crm360", description: "AI-powered customer engagement.", icon: "Contact" },
+      { label: "PMRG CloudOps", href: "/solutions/cloudops", description: "Infrastructure automation & monitoring.", icon: "Server" },
+      { label: "PMRG DataIntel", href: "/solutions/dataintel", description: "Business intelligence & analytics.", icon: "BarChart3" },
     ],
   },
   { label: "Case Studies", href: "/case-studies" },
@@ -77,6 +78,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 export const SERVICES = [
   {
@@ -96,6 +98,10 @@ export const SERVICES = [
       "Interconnect & partner settlement",
     ],
     stack: ["Kubernetes", "Kafka", "PostgreSQL", "Redis", "gRPC", "Camel"],
+    useCase: {
+      title: "Case: 5G slice monetization",
+      body: "We helped a tier-2 operator launch slice-based pricing in 11 days using a real-time rating engine — cutting rating latency 80% and unlocking new B2B revenue.",
+    },
   },
   {
     id: "crm",
@@ -114,6 +120,10 @@ export const SERVICES = [
       "Custom dashboards & reporting studio",
     ],
     stack: ["React", "Node.js", "GraphQL", "PostgreSQL", "Elasticsearch", "RabbitMQ"],
+    useCase: {
+      title: "Case: Churn turnaround at an MVNO",
+      body: "Our AI next-best-action engine flagged 92% of at-risk subscribers a quarter early and orchestrated retention offers — reducing monthly churn by 18%.",
+    },
   },
   {
     id: "digital",
@@ -132,6 +142,10 @@ export const SERVICES = [
       "Change management & enablement",
     ],
     stack: ["AWS", "Azure", "Terraform", "Strangler", "Camunda", "Apache Kafka"],
+    useCase: {
+      title: "Case: Mainframe decommissioning",
+      body: "Using a strangler-fig approach, we retired a 20-year-old mainframe order system domain-by-domain with zero downtime and full audit traceability.",
+    },
   },
   {
     id: "ai-ml",
@@ -150,6 +164,10 @@ export const SERVICES = [
       "MLOps: CI/CD for models, monitoring & drift",
     ],
     stack: ["TensorFlow", "PyTorch", "MLflow", "Kubeflow", "LangChain", "Hugging Face"],
+    useCase: {
+      title: "Case: Grid anomaly detection at scale",
+      body: "A streaming ML pipeline over 2M smart meters now detects outages and tampering sub-minute — cutting non-technical losses by 31%.",
+    },
   },
   {
     id: "cloud",
@@ -168,6 +186,10 @@ export const SERVICES = [
       "FinOps cost optimization & governance",
     ],
     stack: ["Kubernetes", "Terraform", "ArgoCD", "Prometheus", "Grafana", "Istio"],
+    useCase: {
+      title: "Case: FinOps velocity engine",
+      body: "GitOps delivery with ArgoCD plus FinOps guardrails doubled a fintech's deploy frequency while reducing cloud spend by 23%.",
+    },
   },
   {
     id: "custom",
@@ -186,12 +208,18 @@ export const SERVICES = [
       "Long-term application lifecycle support",
     ],
     stack: ["Next.js", "React Native", "Go", "NestJS", "PostgreSQL", "Playwright"],
+    useCase: {
+      title: "Case: Headless commerce re-platform",
+      body: "We rebuilt a marketplace on a headless, event-driven stack — halving page load time and tripling peak throughput on Black Friday.",
+    },
   },
 ] as const;
+
 
 export const PRODUCTS = [
   {
     id: "bss-suite",
+    slug: "bss-suite", 
     name: "PMRG BSS Suite",
     tagline: "Unified billing & revenue management",
     icon: "Receipt",
@@ -212,6 +240,7 @@ export const PRODUCTS = [
   },
   {
     id: "crm360",
+    slug: "crm360",
     name: "PMRG CRM360",
     tagline: "AI-powered customer engagement platform",
     icon: "Contact",
@@ -232,6 +261,7 @@ export const PRODUCTS = [
   },
   {
     id: "cloudops",
+    slug: "cloudops",
     name: "PMRG CloudOps",
     tagline: "Infrastructure automation & monitoring",
     icon: "Server",
@@ -252,6 +282,7 @@ export const PRODUCTS = [
   },
   {
     id: "dataintel",
+    slug: "dataintel",
     name: "PMRG DataIntel",
     tagline: "Business intelligence & analytics platform",
     icon: "BarChart3",
@@ -271,6 +302,8 @@ export const PRODUCTS = [
     ],
   },
 ] as const;
+
+
 
 export const STATS: { value: number; suffix: string; label: string; decimals?: number }[] = [
   { value: 150, suffix: "+", label: "Projects Delivered" },
@@ -390,137 +423,19 @@ export const CASE_STUDIES = [
     tech: ["Kubernetes", "Kafka", "Go", "Redis", "PostgreSQL"],
     testimonial: "PMRG didn't just migrate our billing — they reimagined it for 5G.",
   },
-  {
-    slug: "ai-churn-crm360",
-    title: "AI Churn Prevention with CRM360",
-    industry: "Telecommunications",
-    tag: "AI & CRM",
-    excerpt: "A churn model that flagged 92% of at-risk subscribers a quarter early — and the next-best-action engine that saved them.",
-    challenge: "An MVNO was losing 3.2% of subscribers monthly with no early-warning system and reactive retention.",
-    solution: "We deployed CRM360 with a gradient-boosted churn model and a next-best-action engine that orchestrated offers across channels.",
-    results: ["92% at-risk subscribers flagged early", "−18% monthly churn", "+27% CSAT"],
-    tech: ["XGBoost", "MLflow", "React", "Node.js", "Kafka"],
-    testimonial: "The AI didn't just predict churn — it told us exactly what to do about it.",
-  },
-  {
-    slug: "finserv-cloudops",
-    title: "CloudOps Cuts Cloud Spend 23%",
-    industry: "Banking & Finance",
-    tag: "Cloud & DevOps",
-    excerpt: "A FinServ platform team doubled deploy frequency while cutting cloud costs by nearly a quarter.",
-    challenge: "A fast-growing fintech's cloud spend was growing faster than revenue, with manual deploys and poor observability.",
-    solution: "We rolled out CloudOps — GitOps delivery with ArgoCD, FinOps guardrails, and full-stack observability on Kubernetes.",
-    results: ["−23% cloud cost", "12× daily deploy frequency", "−61% MTTR"],
-    tech: ["Kubernetes", "ArgoCD", "Terraform", "Prometheus", "Grafana"],
-    testimonial: "PMRG turned our platform team into a velocity engine.",
-  },
-  {
-    slug: "healthcare-dataintel",
-    title: "Healthcare Analytics on DataIntel",
-    industry: "Healthcare",
-    tag: "Data & AI",
-    excerpt: "A provider network unified 14 data silos into one governed analytics platform — 10× faster queries.",
-    challenge: "A hospital network had 14 disconnected data silos, slow reporting, and no single source of truth.",
-    solution: "We built a lakehouse on DataIntel with a governed semantic layer and self-serve BI, plus NLP over clinical notes.",
-    results: ["10× faster query performance", "4.2× more active analysts", "14 silos → 1 platform"],
-    tech: ["Databricks", "Snowflake", "dbt", "Power BI", "Spark"],
-    testimonial: "For the first time, every clinician trusts the same numbers.",
-  },
-  {
-    slug: "ecommerce-custom",
-    title: "Headless Commerce Re-platform",
-    industry: "E-Commerce",
-    tag: "Custom Software",
-    excerpt: "We rebuilt a marketplace on a headless, API-first stack — halving page load and tripling throughput.",
-    challenge: "A monolithic marketplace struggled with traffic spikes, 6-second page loads, and a fragile release process.",
-    solution: "We re-platformed to a headless, event-driven architecture with Next.js storefronts and a Go services layer.",
-    results: ["−50% page load time", "3× peak throughput", "Daily releases enabled"],
-    tech: ["Next.js", "Go", "Kafka", "PostgreSQL", "Redis"],
-    testimonial: "Black Friday went from our scariest day to our smoothest.",
-  },
-  {
-    slug: "energy-iot-anomaly",
-    title: "Grid Anomaly Detection with ML",
-    industry: "Energy & Utilities",
-    tag: "AI & IoT",
-    excerpt: "Real-time anomaly detection across 2M smart meters — catching outages and theft before customers notice.",
-    challenge: "A utility couldn't detect meter tampering or outages fast enough, losing revenue and trust.",
-    solution: "We deployed a streaming anomaly-detection pipeline over 2M smart meters with sub-minute alerting.",
-    results: ["Sub-minute outage detection", "−31% non-technical losses", "2M meters monitored"],
-    tech: ["Apache Flink", "Kafka", "Python", "MLflow", "GCP"],
-    testimonial: "We now know about outages before our customers do.",
-  },
+  
 ] as const;
 
 export const BLOG_POSTS = [
-  {
-    slug: "convergent-charging-5g",
-    title: "Architecting Convergent Charging for the 5G Era",
-    excerpt: "Slice-based pricing demands a fundamentally different charging architecture. Here's the blueprint we use.",
-    category: "Telecom",
-    date: "2026-05-18",
-    readTime: "8 min read",
-  },
-  {
-    slug: "mlops-production-ml",
-    title: "From Notebook to Production: A Pragmatic MLOps Playbook",
-    excerpt: "Most ML models never reach production. This is the pipeline pattern that gets them there — and keeps them honest.",
-    category: "AI & ML",
-    date: "2026-05-02",
-    readTime: "11 min read",
-  },
-  {
-    slug: "legacy-modernization-strangler",
-    title: "Killing the Mainframe: A Strangler-Fig Migration Guide",
-    excerpt: "Big-bang rewrites fail. The strangler fig pattern lets you modernize legacy safely, one domain at a time.",
-    category: "Digital Transformation",
-    date: "2026-04-14",
-    readTime: "9 min read",
-  },
-  {
-    slug: "finops-cloud-cost",
-    title: "FinOps in Practice: Cutting Cloud Spend Without Killing Velocity",
-    excerpt: "Cost optimization isn't about cutting servers — it's about engineering a culture of accountability.",
-    category: "Cloud",
-    date: "2026-03-28",
-    readTime: "7 min read",
-  },
-  {
-    slug: "crm-next-best-action",
-    title: "Next-Best-Action: The AI Engine Behind Modern CRM",
-    excerpt: "Why NBA engines outperform generic recommendations — and how to build one that respects privacy.",
-    category: "AI & ML",
-    date: "2026-03-10",
-    readTime: "10 min read",
-  },
-  {
-    slug: "telco-digital-twins",
-    title: "Digital Twins for Telecom Networks",
-    excerpt: "Simulating the network before you touch it — how twins are reshaping capacity planning and incident response.",
-    category: "Industry News",
-    date: "2026-02-20",
-    readTime: "6 min read",
-  },
+ 
 ] as const;
 
 export const JOB_LISTINGS = [
-  { title: "Senior Backend Engineer (Go)", department: "Engineering", location: "Gurugram / Remote", type: "Full-time", description: "Build the charging core of our BSS Suite in Go and Kubernetes." },
-  { title: "AI/ML Engineer — NLP & LLMs", department: "AI & Data", location: "Remote", type: "Full-time", description: "Productionize LLM features across CRM360 and DataIntel." },
-  { title: "Cloud Platform Engineer", department: "Cloud & DevOps", location: "Dubai / Remote", type: "Full-time", description: "Own the CloudOps platform — Kubernetes, GitOps, observability." },
-  { title: "Frontend Engineer (React/Next.js)", department: "Engineering", location: "Gurugram", type: "Full-time", description: "Craft premium, accessible UIs across our product suite." },
-  { title: "Telecom BSS Solutions Architect", department: "Solutions", location: "Singapore", type: "Full-time", description: "Shape convergent-charging architectures for tier-1 operators." },
-  { title: "DevSecOps Engineer", department: "Cloud & DevOps", location: "London / Remote", type: "Full-time", description: "Embed zero-trust security into CI/CD and platform engineering." },
-  { title: "Product Designer", department: "Design", location: "Gurugram / Remote", type: "Full-time", description: "Define the design language for enterprise-grade products." },
-  { title: "Technical Program Manager", department: "Delivery", location: "Gurugram", type: "Full-time", description: "Drive complex, multi-team delivery for enterprise clients." },
+  
 ] as const;
 
 export const BENEFITS = [
-  { icon: "HeartPulse", title: "Health Insurance", description: "Comprehensive medical, dental & vision for you and your family." },
-  { icon: "Globe", title: "Remote-First", description: "Work from anywhere with flexible, async-friendly hours." },
-  { icon: "GraduationCap", title: "Learning Budget", description: "$2,500 annual stipend for courses, books & conferences." },
-  { icon: "TrendingUp", title: "Equity & Growth", description: "Meaningful equity and a clear, sponsored growth path." },
-  { icon: "Laptop", title: "Top-Tier Gear", description: "Your choice of laptop, monitor & home-office setup." },
-  { icon: "Plane", title: "Annual Offsites", description: "Quarterly team gatherings in great destinations." },
+  
 ] as const;
 
 export const BLOG_CATEGORIES = ["All", "AI & ML", "Telecom", "Digital Transformation", "Cloud", "Industry News"] as const;
