@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
-import { ChevronDown, Menu } from "lucide-react";
-import { NAV_ITEMS } from "@/lib/constants";
+import { ChevronDown, Menu, Linkedin, Instagram, Facebook } from "lucide-react";
+import { NAV_ITEMS, COMPANY } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 import { MegaMenu } from "./MegaMenu";
@@ -165,6 +165,53 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <NavSearch isOverLight={isOverLight} />
+
+            {/* Social Icons */}
+            <div className="hidden items-center gap-2 lg:flex">
+              <a
+                href={COMPANY.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-lg border transition-colors",
+                  isOverLight
+                    ? "border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    : "border-line text-fg-subtle hover:border-line-strong hover:text-fg"
+                )}
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+              <a
+                href={COMPANY.social.instagram || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-lg border transition-colors",
+                  isOverLight
+                    ? "border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    : "border-line text-fg-subtle hover:border-line-strong hover:text-fg"
+                )}
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a
+                href={COMPANY.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-lg border transition-colors",
+                  isOverLight
+                    ? "border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    : "border-line text-fg-subtle hover:border-line-strong hover:text-fg"
+                )}
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+            </div>
+
             <button
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"

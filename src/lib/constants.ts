@@ -22,6 +22,7 @@ export const COMPANY = {
   social: {
     linkedin: "https://www.linkedin.com/company/pmrg-solution/",
     facebook: "https://www.facebook.com/people/Sugaam-In/pfbid02MDjVo1ZDWVKJBJSR4cvnb5FYV94bXowvYji8nQeKkgez8DnuTQ9w7RE4QoSCjKNcl/",
+    instagram: "https://instagram.com/pmrg",
   },
   url: "https://www.pmrgsolution.com",
 } as const;
