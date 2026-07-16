@@ -89,7 +89,9 @@ export default function Header() {
 
   // Glassmorphism values
   const blurAmount = Math.max(scrollProgress * 20, 12);
-  const bgOpacity = scrolled ? 0.5 : 0.3;
+  const bgOpacity = scrolled 
+  ? (isOverLight ? 0.92 : 0.75)   // light section pe 92% opaque
+  : (isOverLight ? 0.70 : 0.40);
   const borderOpacity = scrolled ? 0.08 : 0.04;
 
   // Colors adapt based on section theme

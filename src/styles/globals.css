@@ -22,8 +22,8 @@
 
     /* ── Light surfaces ── */
     --light-bg: #ffffff;
-    --light-bg-grey: #F8FAFC;
-    --light-bg-slate: #F1F5F9;
+     --light-bg: #F9FBFF;           /* pure white ki jagah thoda cool tone */
+  --light-bg-grey: #F0F5FF;
     --light-line: #E2E8F0;
     --light-line-strong: #CBD5E1;
 
@@ -32,10 +32,10 @@
     --fg-muted: #aab2c8;
     --fg-subtle: #778099;
 
-    /* ── Text on light ── */
-    --fg-on-light: #0F172A;
-    --fg-on-light-muted: #475569;
-    --fg-on-light-subtle: #94A3B8;
+    /* ── Text on light — now darker for better contrast ── */
+    --fg-on-light: #0F172A;            /* unchanged */
+    --fg-on-light-muted: #334155;      /* was #475569 — darker */
+    --fg-on-light-subtle: #64748B;     /* was #94A3B8 — readable */
 
     /* ── Accent: indigo ── */
     --accent: #6366f1;
@@ -66,7 +66,6 @@
     color: var(--fg);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     background-color: var(--bg);
-    /* No fixed gradient mesh — sections paint their own backgrounds */
   }
 
   ::selection {
@@ -189,7 +188,7 @@
 
   .glass-light:hover {
     border-color: rgba(37, 99, 235, 0.3);
-    box-shadow: 0 4px 24px rgba(37,99,235,0.10), 0 8px 32px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(37,99,235,0.08), 0 8px 28px rgba(0,0,0,0.06); /* softer shadow */
   }
 
   /* Deep black surface — header & footer */
