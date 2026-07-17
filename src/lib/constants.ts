@@ -678,7 +678,15 @@ export const INDUSTRIES = [
   { icon: "Landmark", name: "Public Institutions", fullName: "Public and Institutional Programs", description: "Program governance, dashboards, innovation challenges, capacity building, digital platforms, and stakeholder engagement." },
 ] as const;
 
-export const TESTIMONIALS = [
+export interface Testimonial {
+  quote: string;
+  name: string;
+  title: string;
+  company: string;
+  logo?: string;
+}
+
+export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "I wanted to take a moment to share my experience with PMRG Solution. I recently had the pleasure of working with their team, and I'm thrilled with the results.",
@@ -703,7 +711,7 @@ export const TESTIMONIALS = [
     company: "VESSEL AUDIT",
     logo: "/logos/vessel-audit.png",
   },
-] as const;
+];
 
 export const CLIENTS = [
   { name: "Hathway", descriptor: "Telecom and digital services engagement" },
