@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MapPin, Briefcase, ArrowUpRight, X } from "lucide-react";
+import { MapPin, Briefcase, ArrowUpRight, X, GraduationCap } from "lucide-react";
 import { JOB_LISTINGS } from "@/lib/constants";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
@@ -10,80 +10,110 @@ import { cn } from "@/lib/utils";
 
 type Job = (typeof JOB_LISTINGS)[number];
 
-export default function JobsList() {
-  const departments = useMemo(
-    () => ["All", ...Array.from(new Set(JOB_LISTINGS.map((j) => j.department)))],
-    []
+function JobCard({ job, onClick }: { job: Job; onClick: () => void }) {
+  const isIntern = job.category === "internship";
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.25 }}
+    >
+      <button onClick={onClick} className="block w-full text-left">
+        <GlassCard
+          theme="light"
+          className="group flex flex-col gap-3 p-5 transition-all hover:-translate-y-0.5"
+        >
+          <div className="flex items-start gap-3">
+            <span
+              className={cn(
+                "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border",
+                isIntern
+                  ? "border-violet-200 bg-violet-50 text-violet-600"
+                  : "border-light-line bg-blue-50 text-brand"
+              )}
+            >
+              {isIntern ? (
+                <GraduationCap className="h-4 w-4" />
+              ) : (
+                <Briefcase className="h-4 w-4" />
+              )}
+            </span>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-semibold text-fg-dark transition-colors group-hover:text-brand leading-snug">
+                {job.title}
+              </h3>
+              <p className="mt-1 text-xs text-fg-dark-muted line-clamp-2">
+                {job.description}
+              </p>
+            </div>
+            <ArrowUpRight className="h-4 w-4 shrink-0 text-fg-dark-subtle transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand" />
+          </div>
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="inline-flex items-center gap-1 rounded-md border border-light-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-fg-dark-muted">
+              {job.department}
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-md border border-light-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-fg-dark-muted">
+              <MapPin className="h-2.5 w-2.5" />
+              {job.location}
+            </span>
+            <span
+              className={cn(
+                "inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider",
+                isIntern
+                  ? "border-violet-200 bg-violet-50 text-violet-600"
+                  : "border-emerald-200 bg-emerald-50 text-emerald-600"
+              )}
+            >
+              {job.type}
+            </span>
+          </div>
+        </GlassCard>
+      </button>
+    </motion.div>
   );
-  const [dept, setDept] = useState("All");
-  const [active, setActive] = useState<Job | null>(null);
+}
 
-  const filtered = useMemo(
-    () => (dept === "All" ? JOB_LISTINGS : JOB_LISTINGS.filter((j) => j.department === dept)),
-    [dept]
+export function JobsPane() {
+  const [active, setActive] = useState<Job | null>(null);
+  const jobs = useMemo(
+    () => JOB_LISTINGS.filter((j) => j.category === "job"),
+    []
   );
 
   return (
     <>
-      {/* department filters */}
-      <div className="flex flex-wrap gap-2">
-        {departments.map((d) => (
-          <button
-            key={d}
-            onClick={() => setDept(d)}
-            className={cn(
-              "rounded-full border px-4 py-2 text-xs font-medium transition-all",
-              dept === d
-                ? "border-brand/50 bg-blue-50 text-brand"
-                : "border-light-line bg-white text-fg-dark-muted hover:border-light-line-strong hover:text-fg-dark"
-            )}
-          >
-            {d}
-          </button>
-        ))}
-      </div>
-
-      {/* list */}
-      <div className="mt-6 flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         <AnimatePresence mode="popLayout">
-          {filtered.map((job) => (
-            <motion.div
-              layout
-              key={job.title}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25 }}
-            >
-              <button onClick={() => setActive(job)} className="block w-full text-left">
-                <GlassCard theme="light" className="group flex flex-col gap-4 p-5 transition-all hover:-translate-y-0.5 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-start gap-4">
-                    <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-light-line bg-blue-50 text-brand">
-                      <Briefcase className="h-4.5 w-4.5" style={{ width: 18, height: 18 }} />
-                    </span>
-                    <div>
-                      <h3 className="text-base font-semibold text-fg-dark transition-colors group-hover:text-brand">
-                        {job.title}
-                      </h3>
-                      <p className="mt-1 text-sm text-fg-dark-muted">{job.description}</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-2 sm:shrink-0">
-                    <span className="inline-flex items-center gap-1.5 rounded-md border border-light-line px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-fg-dark-muted">{job.department}</span>
-                    <span className="inline-flex items-center gap-1.5 rounded-md border border-light-line px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-fg-dark-muted">
-                      <MapPin className="h-3 w-3" />
-                      {job.location}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-emerald-600">{job.type}</span>
-                    <ArrowUpRight className="h-4 w-4 text-fg-dark-subtle transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand" />
-                  </div>
-                </GlassCard>
-              </button>
-            </motion.div>
+          {jobs.map((job) => (
+            <JobCard key={job.title} job={job} onClick={() => setActive(job)} />
           ))}
         </AnimatePresence>
       </div>
+      <AnimatePresence>
+        {active && <JobModal job={active} onClose={() => setActive(null)} />}
+      </AnimatePresence>
+    </>
+  );
+}
 
+export function InternshipsPane() {
+  const [active, setActive] = useState<Job | null>(null);
+  const internships = useMemo(
+    () => JOB_LISTINGS.filter((j) => j.category === "internship"),
+    []
+  );
+
+  return (
+    <>
+      <div className="flex flex-col gap-3">
+        <AnimatePresence mode="popLayout">
+          {internships.map((job) => (
+            <JobCard key={job.title} job={job} onClick={() => setActive(job)} />
+          ))}
+        </AnimatePresence>
+      </div>
       <AnimatePresence>
         {active && <JobModal job={active} onClose={() => setActive(null)} />}
       </AnimatePresence>
@@ -92,6 +122,7 @@ export default function JobsList() {
 }
 
 function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
+  const isIntern = job.category === "internship";
   return (
     <motion.div
       className="fixed inset-0 z-[90] flex items-end justify-center p-0 sm:items-center sm:p-6"
@@ -122,20 +153,29 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
               <MapPin className="h-3 w-3" />
               {job.location}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-emerald-600">{job.type}</span>
+            <span
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider",
+                isIntern
+                  ? "border-violet-200 bg-violet-50 text-violet-600"
+                  : "border-emerald-200 bg-emerald-50 text-emerald-600"
+              )}
+            >
+              {job.type}
+            </span>
           </div>
           <h2 className="mt-4 text-2xl font-bold leading-tight text-fg-dark">{job.title}</h2>
           <p className="mt-3 text-sm leading-relaxed text-fg-dark-muted">{job.description}</p>
 
           <p className="mt-5 text-sm leading-relaxed text-fg-dark-muted">
-            You'll join a cross-functional pod shipping production software for enterprise
-            clients. We move fast, ship often, and care deeply about craft. If that sounds
-            like you, we'd love to hear from you.
+            {isIntern
+              ? "You'll work alongside experienced engineers and designers, gaining hands-on experience with production systems. We believe in learning by doing — you'll contribute real code from day one."
+              : "You'll join a cross-functional pod shipping production software for enterprise clients. We move fast, ship often, and care deeply about craft. If that sounds like you, we'd love to hear from you."}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">
             <Button href="/contact" className="flex-1">
-              Apply Now
+              {isIntern ? "Apply for Internship" : "Apply Now"}
             </Button>
             <Button variant="outline" onClick={onClose}>
               Close
@@ -144,5 +184,15 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
         </div>
       </motion.div>
     </motion.div>
+  );
+}
+
+// Keep default export for backward compat
+export default function JobsList() {
+  return (
+    <div className="flex flex-col gap-8">
+      <JobsPane />
+      <InternshipsPane />
+    </div>
   );
 }

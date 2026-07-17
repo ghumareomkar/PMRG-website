@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin, Linkedin, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Reveal } from "@/components/animations/Reveal";
@@ -12,11 +12,6 @@ export const metadata: Metadata = {
     "Tell us the challenge you want to solve. Business enquiries, product demonstrations, education partnerships, internship programs, and technology alliances.",
   alternates: { canonical: "/contact" },
 };
-
-const socials = [
-  { icon: Linkedin, href: COMPANY.social.linkedin, label: "LinkedIn" },
-  { icon: Facebook, href: COMPANY.social.facebook, label: "Facebook" },
-];
 
 export default function ContactPage() {
   return (
@@ -105,32 +100,6 @@ export default function ContactPage() {
                       </div>
                     </div>
                   ))}
-                </div>
-              </GlassCard>
-
-              {/* socials */}
-              <GlassCard theme="light" className="relative flex-1 overflow-hidden p-7">
-                <div className="relative flex h-full flex-col">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-fg-dark-subtle">
-                      Follow us
-                    </h3>
-                    <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-emerald-600">Online</span>
-                  </div>
-                  <div className="mt-5 flex gap-3">
-                    {socials.map((s) => (
-                      <a
-                        key={s.label}
-                        href={s.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={s.label}
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-light-line text-fg-dark-muted transition-all hover:border-brand/40 hover:text-brand"
-                      >
-                        <s.icon className="h-4.5 w-4.5" style={{ width: 18, height: 18 }} />
-                      </a>
-                    ))}
-                  </div>
                 </div>
               </GlassCard>
             </div>

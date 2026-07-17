@@ -1,17 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Linkedin, Facebook, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { COMPANY, NAV_ITEMS, SERVICE_PILLARS } from "@/lib/constants";
 import { Logo } from "./Logo";
 
 const quickLinks = NAV_ITEMS.filter((n) => !n.children).slice(0, 7);
 const serviceLinks = SERVICE_PILLARS;
-
-const socials = [
-  { icon: Linkedin, href: COMPANY.social.linkedin, label: "LinkedIn" },
-  { icon: Facebook, href: COMPANY.social.facebook, label: "Facebook" },
-];
 
 export default function Footer() {
   return (
@@ -27,20 +22,6 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-4">
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">{COMPANY.description}</p>
-            <div className="mt-6 flex items-center gap-2">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-line text-fg-subtle transition-colors hover:border-brand/40 hover:text-brand"
-                >
-                  <s.icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
           </div>
 
           <div className="lg:col-span-2">

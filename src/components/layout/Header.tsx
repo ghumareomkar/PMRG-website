@@ -121,7 +121,7 @@ export default function Header() {
         }}
       >
         <div
-          className="container-pmrg flex items-center justify-between transition-all duration-300"
+          className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-8 transition-all duration-300 sm:px-12"
           style={{
             height: `${80 - scrollProgress * 16}px`,
           }}

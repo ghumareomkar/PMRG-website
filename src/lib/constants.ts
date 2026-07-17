@@ -47,7 +47,7 @@ export type NavItem = {
 
 export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "Mission Vision", href: "/about" },
   {
     label: "Services",
     href: "/services",
@@ -72,9 +72,9 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Structured Industry Internship", href: "/solutions/industry-internship", description: "Role-based learning & workplace readiness.", icon: "Briefcase" },
     ],
   },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Blogs/Testimonials", href: "/blog" },
-  { label: "Careers", href: "/careers" },
+  { label: "Our Team", href: "/team" },
+  { label: "Jobs/Internship", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -679,7 +679,9 @@ export const INDUSTRIES = [
 ] as const;
 
 export interface Testimonial {
+  slug: string;
   quote: string;
+  fullDescription: string;
   name: string;
   title: string;
   company: string;
@@ -688,24 +690,33 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    slug: "mtc",
     quote:
       "I wanted to take a moment to share my experience with PMRG Solution. I recently had the pleasure of working with their team, and I'm thrilled with the results.",
+    fullDescription:
+      "I wanted to take a moment to share my experience with PMRG Solution. I recently had the pleasure of working with their team, and I'm thrilled with the results. From the initial consultation to the final delivery, everything was handled with utmost professionalism. The team demonstrated deep technical expertise, proactive communication, and a genuine commitment to understanding our business needs. They delivered a solution that not only met our expectations but exceeded them in terms of quality, performance, and scalability. I would highly recommend PMRG Solution to any organization looking for a reliable and innovative technology partner.",
     name: "MTC",
     title: "Profession",
     company: "MTC",
     logo: "/logos/mtc.png",
   },
   {
+    slug: "school-buddy",
     quote:
       "First off, the design is absolutely stunning. The team really captured our brand's essence and translated it into a visually appealing and user-friendly.",
+    fullDescription:
+      "First off, the design is absolutely stunning. The team really captured our brand's essence and translated it into a visually appealing and user-friendly platform. The attention to detail in every aspect of the design — from color schemes to typography to micro-interactions — shows a deep understanding of modern UX principles. Beyond the aesthetics, the technical implementation was rock-solid. The platform performs flawlessly across devices, loads quickly, and provides an intuitive experience for our users. The PMRG team was collaborative throughout, incorporating our feedback at every stage and delivering on time. Working with them has been a truly positive experience.",
     name: "School Buddy",
     title: "Profession",
     company: "SCHOOL BUDDY",
     logo: "/logos/school-buddy.png",
   },
   {
+    slug: "vessel-audit",
     quote:
       "Throughout the entire process, communication with the team was excellent. They were attentive to our needs and expectations, and always quick to respond to any questions we had.",
+    fullDescription:
+      "Throughout the entire process, communication with the team was excellent. They were attentive to our needs and expectations, and always quick to respond to any questions we had. What impressed us most was their ability to understand the complexities of the maritime audit industry and translate those requirements into a functional, efficient digital solution. The platform they built has streamlined our audit workflows, improved data accuracy, and significantly reduced the time our team spends on administrative tasks. Their post-launch support has been equally impressive — responsive, thorough, and always focused on continuous improvement. PMRG Solution has been an invaluable partner in our digital transformation journey.",
     name: "Vessel Audit",
     title: "Profession",
     company: "VESSEL AUDIT",
@@ -857,97 +868,150 @@ export const CASE_STUDIES = [
 
 export const BLOG_POSTS = [
   {
-    slug: "building-bss-from-scratch-mvno",
-    title: "Building a BSS Platform from Scratch: Lessons from Launching MVNOs",
-    excerpt: "Legacy BSS vendors charge millions and take years. Here's how we build modern billing and provisioning systems that launch operators in months.",
-    content: "",
+    slug: "ai-governance-delivery-discipline",
+    title: "From Black Box to Boardroom: Why AI Governance Is the New Delivery Discipline",
+    excerpt: "Every enterprise racing to adopt AI eventually hits the same wall: models that work in a demo don't automatically translate into decisions leadership can trust. The gap isn't technical capability — it's governance.",
+    content: `<h2>The AI-Intelligence Layer</h2>
+<p>Think of this as the nervous system sitting between raw data and human decision-making. Instead of dashboards that just report what happened, an AI-intelligence layer actively supports decisions — flagging risk before it materializes, surfacing outcome trends across projects, and giving leadership a real-time read on where delivery is heading, not just where it's been.</p>
+<p>The shift matters because most delivery risk isn't sudden. It builds quietly: a slipping sprint here, a resourcing gap there. AI models trained on historical delivery patterns can catch these signals weeks before a human program manager would, simply because they're watching every project simultaneously instead of the two or three closest to them.</p>
+
+<h2>Governance Is What Makes It Trustworthy</h2>
+<p>None of this works without guardrails. Governance frameworks define:</p>
+<ul>
+<li><strong>Data provenance</strong> — where inputs come from and how fresh they are</li>
+<li><strong>Model accountability</strong> — who owns a recommendation, and how it's audited</li>
+<li><strong>Escalation logic</strong> — when an AI flag requires human sign-off versus automated action</li>
+</ul>
+<p>Organizations that skip this step often see AI initiatives stall after the pilot phase — not because the model was wrong, but because nobody could explain <em>why</em> it made a call, and no one was willing to act on a recommendation they couldn't defend.</p>
+
+<h2>Intelligent Sprint Planning: Governance in Action</h2>
+<p>A practical example is capacity-aware sprint planning. Rather than teams committing to sprints based on gut feel or last quarter's velocity, an intelligence layer can cross-reference actual team capacity, historical commitment accuracy, and dependency risk to recommend realistic sprint loads — and explain the reasoning behind each recommendation.</p>
+<p>This is delivery intelligence doing double duty: improving planning accuracy while building the audit trail that governance requires. Over time, this creates a virtuous cycle — better data discipline produces better models, and better-governed models earn more trust, which drives adoption deeper into the organization.</p>
+
+<h2>The Bottom Line</h2>
+<p>AI governance isn't a compliance checkbox bolted onto a project after the fact. Done right, it's the operating discipline that turns AI from an experimental tool into a dependable part of how an enterprise plans, delivers, and course-corrects. Organizations that treat governance as core infrastructure — not an afterthought — are the ones that will still be running their AI initiatives three years from now.</p>`,
+    category: "AI & Governance",
+    date: "2026-07-10",
+    readTime: "7 min read",
+  },
+  {
+    slug: "customer-lifecycle-orchestration-telecom",
+    title: "Beyond the Network: Why Customer Lifecycle Orchestration Is Telecom's Next Battleground",
+    excerpt: "Telecom operators have spent decades perfecting the network. Coverage, latency, uptime — these are table stakes now. What customers notice is everything else: the billing error, the plan upgrade that doesn't sync, the support agent with no context.",
+    content: `<h2>The BSS/OSS Bottleneck</h2>
+<p>Business Support Systems (BSS) and Operations Support Systems (OSS) form the backbone of how telecom operators bill, provision, and manage services. The problem is that most of these systems evolved in silos — billing here, provisioning there, customer records somewhere else entirely — often stitched together over 15–20 years of mergers, upgrades, and vendor changes.</p>
+<p>The result is friction that customers feel directly: a plan change that takes days to reflect in billing, a network fault that support can't see in real time, an ERP system with no visibility into what's happening on the customer-facing side. Modernizing this stack isn't glamorous work, but it's the foundation everything else depends on.</p>
+
+<h2>Customer Lifecycle Management as a Discipline</h2>
+<p>End-to-end customer lifecycle orchestration reframes the problem. Instead of treating onboarding, billing, support, and retention as separate workflows owned by separate teams, it treats them as one continuous journey — with a single, consistent view of the customer at every stage.</p>
+<p>Done well, this means:</p>
+<ul>
+<li>A customer's plan change made via app instantly reflects across billing, support, and network provisioning</li>
+<li>Churn risk signals (usage drops, repeated support contacts, billing disputes) surface automatically instead of being buried across disconnected systems</li>
+<li>Retention offers are triggered by real behavioral signals, not generic campaigns blasted to entire customer segments</li>
+</ul>
+
+<h2>Why This Matters More Now</h2>
+<p>Telecom margins are under pressure, acquisition costs are rising, and customers have more switching options than ever — MVNOs, bundled fiber-and-mobile plans, and satellite alternatives are all lowering the barrier to leave. In that environment, the cost of a bad billing experience isn't just one annoyed customer; it's a churn event that took years of infrastructure investment to prevent.</p>
+<p>Enterprise and telecom platforms that unify BSS, OSS, ERP, and CRM around the customer — rather than around internal org charts — are the ones positioned to compete on experience, not just price. The network got operators this far. Customer platforms will decide who wins the next decade.</p>`,
     category: "Telecom",
+    date: "2026-06-28",
+    readTime: "8 min read",
+  },
+  {
+    slug: "data-center-management-hybrid-cloud",
+    title: "The Invisible Backbone: Rethinking Data Center Management for a Hybrid-Cloud World",
+    excerpt: "Nobody notices infrastructure until it fails. Success looks like nothing happening — no outages, no slow queries, no 2 a.m. pages. But achieving that invisibility has gotten dramatically harder as environments have sprawled.",
+    content: `<h2>The Visibility Problem</h2>
+<p>Most organizations don't actually lack infrastructure — they lack a unified view of it. A typical enterprise today runs workloads across:</p>
+<ul>
+<li>On-premises data centers for legacy or compliance-sensitive systems</li>
+<li>One or more public cloud providers for elastic workloads</li>
+<li>Edge locations for latency-sensitive applications</li>
+<li>A growing set of SaaS and managed services nobody centrally tracks</li>
+</ul>
+<p>Each of these tends to have its own monitoring tools, its own alerting logic, and its own team. When something breaks, the first hour of incident response is often just figuring out <em>where</em> the problem actually is — before anyone can start fixing it.</p>
+<p>Unified infrastructure visibility solves this by pulling telemetry from every environment into a single control plane. It doesn't replace the specialized tools each team uses; it gives leadership and on-call engineers a common picture so a network issue in one region and a database bottleneck in another don't look like two unrelated fires.</p>
+
+<h2>Managed Operations as a Force Multiplier</h2>
+<p>Once visibility exists, managed operations can shift from reactive firefighting to proactive management. Capacity planning becomes a data-driven exercise instead of a guessing game. Cost optimization — a perennial pain point in cloud environments — becomes possible because spend can finally be mapped back to actual usage patterns, not just monthly invoices.</p>
+<p>DevOps practices benefit too. Deployment pipelines that are visible end-to-end make it far easier to spot where releases are slowing down, where flaky tests are costing engineering time, and where infrastructure — not code — is the actual bottleneck.</p>
+
+<h2>Why This Is a Business Conversation, Not Just an IT One</h2>
+<p>Infrastructure decisions used to be purely technical. That's no longer true. Downtime has direct revenue impact, cloud costs are now a board-level budget line, and infrastructure choices increasingly determine how fast a company can ship new products. Organizations that treat data center and cloud management as a strategic capability — not just a cost center to be minimized — end up with more reliable systems and lower total spend, because they're managing infrastructure with intention instead of accumulated inertia.</p>
+<p>The goal isn't a flashier data center. It's an infrastructure layer boring enough that nobody has to think about it — which, paradoxically, takes real sophistication to achieve.</p>`,
+    category: "Cloud & Infrastructure",
     date: "2026-06-15",
-    readTime: "9 min read",
+    readTime: "7 min read",
   },
   {
-    slug: "gen-ai-education-personalized-learning",
-    title: "How Gen-AI Is Transforming Personalized Learning in Schools",
-    excerpt: "From adaptive tutoring to automated assessments — a deep dive into building School Buddy and what we learned about AI in education.",
-    content: "",
-    category: "AI & ML",
+    slug: "responsible-ai-education-smart-campus",
+    title: "Responsible AI in Education: From K-12 Classrooms to Smart University Campuses",
+    excerpt: "Education technology has a credibility problem. Closing the gap between AI hype and real classroom impact requires two things done well: responsible AI for younger learners, and smarter operations for the institutions built to serve them.",
+    content: `<h2>AI for Schools: Responsibility First</h2>
+<p>K-12 is not the place for move-fast-and-break-things AI deployment. The students involved are minors, the stakes around data privacy are high, and the potential for AI to either help or harm learning outcomes is significant depending on how it's implemented.</p>
+<p>Responsible AI for schools means:</p>
+<ul>
+<li><strong>Transparency for educators</strong> — teachers should understand what an AI tool is recommending and why, not treat it as an unquestionable black box</li>
+<li><strong>Privacy by design</strong> — student data protections that go beyond minimum compliance, especially given how much behavioral data adaptive learning tools can generate</li>
+<li><strong>Support, not replacement</strong> — AI that helps teachers personalize instruction and catch students falling behind, without displacing the human relationships that actually drive learning</li>
+</ul>
+<p>Done carefully, AI can help flag a struggling student weeks before a report card would show it, or free up a teacher's time from administrative grading so more of it goes toward actual instruction. Done carelessly, it becomes another unaccountable system making decisions about children's education.</p>
+
+<h2>Smart Campuses: Where Operations Meets Academics</h2>
+<p>Universities face a different but related challenge: connecting sprawling, decades-old campus infrastructure into something that functions as a coherent, intelligent system. Smart campus initiatives typically combine:</p>
+<ul>
+<li>Connected building and facilities management (energy use, space utilization, maintenance)</li>
+<li>Academic operations intelligence (enrollment patterns, resource allocation, campus safety)</li>
+<li>Unified data across departments that have historically operated in silos</li>
+</ul>
+<p>The payoff isn't just efficiency, though that matters — a campus that knows which buildings are underused can cut energy costs meaningfully. The bigger win is that connected campus data lets administrators make better decisions about everything from course scheduling to student support services, grounded in what's actually happening across campus rather than fragmented departmental reports.</p>
+
+<h2>The Common Thread</h2>
+<p>Whether it's a classroom or a campus, the throughline is the same: AI in education only earns its place when it's built around the people it's meant to serve — students, teachers, and administrators — rather than around what's technically possible. Institutions that get this right will find that responsible, well-governed AI doesn't just modernize education. It restores some of the trust that flashy, poorly-implemented edtech has spent the last decade eroding.</p>`,
+    category: "Education",
     date: "2026-06-01",
-    readTime: "10 min read",
+    readTime: "8 min read",
   },
   {
-    slug: "mvne-integration-guide",
-    title: "MVNE Integration: The Technical Blueprint for Virtual Operators",
-    excerpt: "Connecting your BSS to an MVNE platform involves provisioning APIs, mediation layers, and real-time charging hooks. Here's the complete guide.",
-    content: "",
-    category: "Telecom",
+    slug: "innovation-talent-pipelines-campus-career",
+    title: "Closing the Gap Between Campus and Career: Building Real Innovation and Talent Pipelines",
+    excerpt: "Ask most employers what's wrong with fresh graduates, and you'll hear: technically capable, but not workplace-ready. Both sides are pointing at the same structural gap — and closing it takes more than a capstone project.",
+    content: `<h2>Incubation Centers: Innovation Needs Structure</h2>
+<p>Every college claims to encourage innovation. Far fewer actually build the pipeline that turns a student's raw idea into something real. A structured incubation center does the unglamorous work that separates genuine innovation programs from decorative ones:</p>
+<ul>
+<li><strong>Idea intake and evaluation</strong> — a real process for surfacing and assessing student projects, not just an annual pitch competition</li>
+<li><strong>Mentorship access</strong> — connections to people who've actually built something, not just faculty advisors reading from a syllabus</li>
+<li><strong>Resource and funding pathways</strong> — a clear route from "interesting prototype" to "fundable venture" or at least a strong portfolio piece</li>
+</ul>
+<p>Without this structure, good ideas die quietly after the semester ends, not because they weren't viable, but because nobody built the scaffolding to carry them further.</p>
+
+<h2>Structured Internships: Learning That Transfers</h2>
+<p>The same principle applies to internships. A student shadowing someone for a few weeks learns very little that transfers into an actual job. A structured, role-based internship — with defined learning objectives, real project ownership, and regular feedback — does something fundamentally different: it teaches workplace readiness as a skill in its own right, alongside whatever technical work is being done.</p>
+<p>This matters especially in fast-moving fields like AI and software engineering, where the gap between "what's taught" and "what's current in industry" can be significant. A well-structured internship exposes students to the actual tools, workflows, and pace of real projects — including the parts that don't show up in coursework, like managing ambiguity, working with legacy systems, or explaining technical decisions to non-technical stakeholders.</p>
+
+<h2>Why Institutions Should Care About Both</h2>
+<p>Incubation and internship programs often get funded and run separately, but they solve the same underlying problem from different angles: how do you take someone with strong fundamentals and make them genuinely useful to an organization — or capable of building their own? Institutions that invest seriously in both don't just improve placement statistics. They produce graduates who can contribute meaningfully in their first few months on the job, rather than needing a year of informal, unstructured ramp-up that most employers aren't set up to provide.</p>
+<p>The students entering the workforce over the next few years will be judged less on what they memorized and more on what they can actually do. Institutions that build real pipelines — not token programs — are the ones giving their students a genuine head start.</p>`,
+    category: "Education",
     date: "2026-05-18",
-    readTime: "8 min read",
-  },
-  {
-    slug: "crm-unified-customer-view",
-    title: "The Unified Customer View: Why Your CRM Needs a Single Pane of Glass",
-    excerpt: "Most operators manage customers across 4+ tools. We explain why unified CRM with integrated ticketing and SLA tracking changes everything.",
-    content: "",
-    category: "Digital Transformation",
-    date: "2026-05-02",
     readTime: "7 min read",
-  },
-  {
-    slug: "self-care-portal-reducing-support-costs",
-    title: "Digital Self-Care Portals: Cutting Support Costs by 40%",
-    excerpt: "Subscribers want to check balances, change plans, and raise complaints without calling support. Here's how to build a portal that actually works.",
-    content: "",
-    category: "Telecom",
-    date: "2026-04-14",
-    readTime: "6 min read",
-  },
-  {
-    slug: "erp-implementation-lessons",
-    title: "ERP Implementation: 5 Hard Lessons from the Manufacturing Floor",
-    excerpt: "Finance, inventory, procurement, and HR under one roof sounds simple. Getting adoption right is the real challenge — here's what we've learned.",
-    content: "",
-    category: "Digital Transformation",
-    date: "2026-03-28",
-    readTime: "8 min read",
-  },
-  {
-    slug: "cashback-loyalty-wallets-telecom",
-    title: "Cashback Loyalty Wallets: Boosting ARPU for Telecom Operators",
-    excerpt: "How integrated cashback and loyalty programs inside BSS platforms drive subscriber engagement and increase average revenue per user.",
-    content: "",
-    category: "Telecom",
-    date: "2026-03-10",
-    readTime: "7 min read",
-  },
-  {
-    slug: "digitizing-maritime-compliance",
-    title: "From Paper to Platform: Digitizing Maritime Vessel Audits",
-    excerpt: "Paper-based inspections cost the maritime industry millions in delays. We share how mobile-first audit platforms are changing compliance.",
-    content: "",
-    category: "Industry News",
-    date: "2026-02-20",
-    readTime: "6 min read",
-  },
-  {
-    slug: "cloud-migration-enterprise-apps",
-    title: "Cloud Migration for Enterprise Apps: A Practical Playbook",
-    excerpt: "Moving legacy business applications to the cloud isn't a lift-and-shift job. Here's the phased approach that minimizes risk and maximizes ROI.",
-    content: "",
-    category: "Cloud",
-    date: "2026-02-05",
-    readTime: "9 min read",
   },
 ] as const;
 
 export const JOB_LISTINGS = [
-  { title: "Senior Backend Engineer (Go)", department: "Engineering", location: "Pune / Remote", type: "Full-time", description: "Build the charging core of our BSS Suite in Go and Kubernetes." },
-  { title: "AI/ML Engineer — NLP & LLMs", department: "AI & Data", location: "Remote", type: "Full-time", description: "Productionize LLM features across CRM360 and DataIntel." },
-  { title: "Cloud Platform Engineer", department: "Cloud & DevOps", location: "Dubai / Remote", type: "Full-time", description: "Own the CloudOps platform — Kubernetes, GitOps, observability." },
-  { title: "Frontend Engineer (React/Next.js)", department: "Engineering", location: "Pune", type: "Full-time", description: "Craft premium, accessible UIs across our product suite." },
-  { title: "Telecom BSS Solutions Architect", department: "Solutions", location: "Singapore", type: "Full-time", description: "Shape convergent-charging architectures for tier-1 operators." },
-  { title: "DevSecOps Engineer", department: "Cloud & DevOps", location: "London / Remote", type: "Full-time", description: "Embed zero-trust security into CI/CD and platform engineering." },
-  { title: "Product Designer", department: "Design", location: "Pune / Remote", type: "Full-time", description: "Define the design language for enterprise-grade products." },
-  { title: "Technical Program Manager", department: "Delivery", location: "Pune", type: "Full-time", description: "Drive complex, multi-team delivery for enterprise clients." },
+  { title: "Senior Backend Engineer (Go)", department: "Engineering", location: "Pune / Remote", type: "Full-time", category: "job" as const, description: "Build the charging core of our BSS Suite in Go and Kubernetes." },
+  { title: "AI/ML Engineer — NLP & LLMs", department: "AI & Data", location: "Remote", type: "Full-time", category: "job" as const, description: "Productionize LLM features across CRM360 and DataIntel." },
+  { title: "Cloud Platform Engineer", department: "Cloud & DevOps", location: "Dubai / Remote", type: "Full-time", category: "job" as const, description: "Own the CloudOps platform — Kubernetes, GitOps, observability." },
+  { title: "Frontend Engineer (React/Next.js)", department: "Engineering", location: "Pune", type: "Full-time", category: "job" as const, description: "Craft premium, accessible UIs across our product suite." },
+  { title: "Telecom BSS Solutions Architect", department: "Solutions", location: "Singapore", type: "Full-time", category: "job" as const, description: "Shape convergent-charging architectures for tier-1 operators." },
+  { title: "DevSecOps Engineer", department: "Cloud & DevOps", location: "London / Remote", type: "Full-time", category: "job" as const, description: "Embed zero-trust security into CI/CD and platform engineering." },
+  { title: "Product Designer", department: "Design", location: "Pune / Remote", type: "Full-time", category: "job" as const, description: "Define the design language for enterprise-grade products." },
+  { title: "Technical Program Manager", department: "Delivery", location: "Pune", type: "Full-time", category: "job" as const, description: "Drive complex, multi-team delivery for enterprise clients." },
+  { title: "Frontend Development Intern", department: "Engineering", location: "Pune", type: "Internship", category: "internship" as const, description: "Learn and contribute to production React/Next.js applications under senior mentorship." },
+  { title: "AI/ML Research Intern", department: "AI & Data", location: "Remote", type: "Internship", category: "internship" as const, description: "Work on real-world NLP and LLM projects with our AI team." },
+  { title: "Cloud & DevOps Intern", department: "Cloud & DevOps", location: "Pune", type: "Internship", category: "internship" as const, description: "Hands-on experience with Kubernetes, CI/CD pipelines, and cloud infrastructure." },
+  { title: "UI/UX Design Intern", department: "Design", location: "Pune / Remote", type: "Internship", category: "internship" as const, description: "Design intuitive interfaces for enterprise products alongside experienced designers." },
 ] as const;
 
 export const BENEFITS = [
@@ -959,7 +1023,7 @@ export const BENEFITS = [
   { icon: "TrendingUp", title: "Growth & Equity", description: "Clear career ladders, regular promotions, and meaningful equity participation." },
 ] as const;
 
-export const BLOG_CATEGORIES = ["All", "AI & ML", "Telecom", "Digital Transformation", "Cloud", "Industry News"] as const;
+export const BLOG_CATEGORIES = ["All", "AI & Governance", "Telecom", "Cloud & Infrastructure", "Education"] as const;
 export const CASE_STUDY_FILTERS = ["All", "Telecommunications", "Education & AI", "Maritime & Logistics", "Manufacturing"] as const;
 export const SERVICE_INTERESTS = [
   "BSS/OSS Solutions",

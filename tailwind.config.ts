@@ -103,8 +103,8 @@ const config: Config = {
           "66%": { transform: "translate(-8px, 8px)" },
         },
         marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-50%)" },
+          from: { transform: "translate3d(0, 0, 0)" },
+          to: { transform: "translate3d(-33.333%, 0, 0)" },
         },
         "gradient-shift": {
           "0%, 100%": { backgroundPosition: "0% 50%" },
@@ -118,7 +118,7 @@ const config: Config = {
       animation: {
         float: "float 7s ease-in-out infinite",
         "float-slow": "float-slow 12s ease-in-out infinite",
-        marquee: "marquee 45s linear infinite",
+        marquee: "marquee 30s linear infinite",
         "gradient-shift": "gradient-shift 8s ease-in-out infinite",
         "pulse-glow": "pulse-glow 4s ease-in-out infinite",
       },

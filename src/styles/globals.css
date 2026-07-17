@@ -316,12 +316,39 @@
   50% { background-position: 100% 50%; }
 }
 
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-33.333%, 0, 0); }
+}
+
 .marquee-track {
-  animation: marquee 45s linear infinite;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+/* Thin scrollbar for side-by-side scrollable panes */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 5px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
 }
 
 @media (prefers-reduced-motion: reduce) {
