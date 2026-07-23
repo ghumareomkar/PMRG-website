@@ -19,8 +19,8 @@ export default function GradientOrb({
 }) {
   const colorMap: Record<string, string> = {
     indigo: "rgba(99,102,241,0.18)",
-    blue: "rgba(37,99,235,0.20)",
-    cyan: "rgba(6,182,212,0.18)",
+    blue: "rgba(37,99,235,0.22)",
+    cyan: "rgba(6,182,212,0.30)",
   };
 
   const resolvedColor = colorMap[color] ?? color;

@@ -14,7 +14,7 @@ const variants: Record<Variant, string> = {
     "bg-accent text-ink hover:bg-accent-light hover:-translate-y-0.5",
   // Secondary: light fill for high-contrast actions
   secondary:
-    "bg-fg text-ink hover:bg-white hover:-translate-y-0.5",
+    "bg-white text-ink border border-light-line shadow-sm shadow-black/5 hover:bg-white/95 hover:-translate-y-0.5",
   // Outline: subtle border
   outline:
     "border border-line-strong text-fg hover:border-fg-muted hover:bg-white/[0.02] hover:-translate-y-0.5",

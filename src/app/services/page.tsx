@@ -37,15 +37,15 @@ export default function ServicesListingPage() {
                   {/* Left — pillar info */}
                   <div className="border-b border-light-line p-8 lg:col-span-2 lg:border-b-0 lg:border-r">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-light-line bg-blue-50 text-brand">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-light-line bg-blue-50 text-black">
                         <Icon name={pillar.icon} className="h-6 w-6" />
                       </span>
                       <span className="rounded-full border border-brand/20 bg-brand-soft px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand">
                         {pillar.tag}
                       </span>
                     </div>
-                    <h3 className="mt-5 text-xl font-bold text-fg-dark sm:text-2xl">{pillar.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-fg-dark-muted">{pillar.description}</p>
+                    <h3 className="mt-5 text-xl font-bold text-black sm:text-2xl">{pillar.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-black">{pillar.description}</p>
                   </div>
 
                   {/* Right — items list */}
@@ -53,8 +53,8 @@ export default function ServicesListingPage() {
                     <ul className="space-y-3.5">
                       {pillar.items.map((item, j) => (
                         <li key={j} className="flex gap-3">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
-                          <span className="text-sm leading-relaxed text-fg-dark-muted">{item}</span>
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-black" />
+                          <span className="text-sm leading-relaxed text-black">{item}</span>
                         </li>
                       ))}
                     </ul>

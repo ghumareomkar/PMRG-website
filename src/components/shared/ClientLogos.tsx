@@ -11,15 +11,13 @@ export default function ClientLogos({ theme = "dark" }: { theme?: "dark" | "ligh
 
   return (
     <div className="relative w-full overflow-hidden mask-fade-x">
-      <div className="marquee-track flex w-max items-center gap-14">
+      <div className="marquee-track">
         {list.map((client, i) => (
           <span
             key={i}
             className={cn(
-              "whitespace-nowrap font-display text-base font-bold uppercase tracking-wider transition-colors sm:text-lg",
-              isLight
-                ? "text-gray-400 hover:text-gray-700"
-                : "text-fg-subtle hover:text-fg"
+              "marquee-item flex-shrink-0 whitespace-nowrap font-display text-base font-bold uppercase tracking-wider transition-colors sm:text-lg",
+              isLight ? "text-gray-400 hover:text-gray-700" : "text-fg-subtle hover:text-fg"
             )}
           >
             {client.name}

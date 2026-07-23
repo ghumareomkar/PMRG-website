@@ -114,7 +114,7 @@ export default function NavSearch({ isOverLight }: { isOverLight: boolean }) {
               "flex h-9 w-9 items-center justify-center rounded-lg border transition-colors",
               isOverLight
                 ? "border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                : "border-line text-fg-subtle hover:border-line-strong hover:text-fg"
+                : "border-line text-fg hover:border-line-strong hover:text-white"
             )}
           >
             <Search className="h-4 w-4" />
@@ -158,7 +158,7 @@ export default function NavSearch({ isOverLight }: { isOverLight: boolean }) {
               aria-label="Close search"
               className={cn(
                 "shrink-0 rounded p-0.5 transition-colors",
-                isOverLight ? "text-gray-400 hover:text-gray-600" : "text-fg-subtle hover:text-fg"
+                isOverLight ? "text-gray-400 hover:text-gray-600" : "text-fg hover:text-white"
               )}
             >
               <X className="h-3.5 w-3.5" />

@@ -94,7 +94,8 @@ export default function Header() {
 
   // Colors adapt based on section theme
   const textColor = isOverLight ? "text-gray-900" : "text-fg";
-  const textMutedColor = isOverLight ? "text-gray-600" : "text-fg-muted";
+  const textMutedColor = isOverLight ? "text-gray-600" : "text-fg-subtle";
+  const hoverTextColor = isOverLight ? "hover:text-gray-900" : "hover:text-fg";
   const bgColor = isOverLight
     ? `rgba(255, 255, 255, ${bgOpacity.toFixed(2)})`
     : `rgba(10, 10, 10, ${bgOpacity.toFixed(2)})`;
@@ -124,7 +125,7 @@ export default function Header() {
             height: `${80 - scrollProgress * 16}px`,
           }}
         >
-          <Logo scrolled={scrolled} />
+          <Logo scrolled={scrolled} textClassName="premium-font" />
 
           <nav className="hidden items-center gap-0.5 lg:flex">
             {NAV_ITEMS.map((item) => {
@@ -142,9 +143,7 @@ export default function Header() {
                     data-active={active}
                     className={cn(
                       "link-underline flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors duration-400",
-                      active
-                        ? textColor
-                        : cn(textMutedColor, isOverLight ? "hover:text-gray-900" : "hover:text-fg")
+                      active ? textColor : cn(textMutedColor, hoverTextColor)
                     )}
                   >
                     {item.label}

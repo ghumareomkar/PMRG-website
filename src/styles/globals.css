@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,16 +11,44 @@
    ============================================================ */
 
 @layer base {
+  /* Local font-face using PT Sans files copied into /public/fonts */
+  @font-face {
+    font-family: 'PT Sans Local';
+    src: url('/fonts/PTSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'PT Sans Local';
+    src: url('/fonts/PTSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'PT Sans Local';
+    src: url('/fonts/PTSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* Use the local PT Sans face */
+  :root {
+    --font-pt-sans: 'PT Sans Local', 'PT Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  }
   :root {
     /* ── Dark surfaces ── */
-    --bg: #050508;
-    --bg-navy: #0B1020;
-    --header-bg: #0a0a0a;
-    --surface: #11162a;
-    --surface-2: #161c33;
-    --surface-3: #1c2340;
-    --line: #232a44;
-    --line-strong: #313a5e;
+    --bg: #030712;
+    --bg-navy: #071A35;          /* Hero section */
+  --header-bg: #020410;        /* Navbar (matched to old repo shade) */
+  
+    --line: #1E3A5F;
+  --line-strong: #295B9E;
+
 
     /* ── Light surfaces ── */
     --light-bg: #ffffff;
@@ -32,24 +62,28 @@
     --fg-muted: #aab2c8;
     --fg-subtle: #778099;
 
-    /* ── Text on light ── */
-    --fg-on-light: #0F172A;
-    --fg-on-light-muted: #475569;
-    --fg-on-light-subtle: #94A3B8;
+    /* ── Text on light (set to black/dark grays for stronger contrast) ── */
+    --fg-on-light: #000000;
+    --fg-on-light-muted: #334155;
+    --fg-on-light-subtle: #ffffff;
 
     /* ── Accent: indigo ── */
-    --accent: #6366f1;
-    --accent-light: #818cf8;
-    --accent-dark: #4f46e5;
-    --accent-soft: rgba(99, 102, 241, 0.14);
+   --accent: #3B82F6;
+  --accent-light: #60A5FA;
+  --accent-dark: #2563EB;
+  --accent-soft: rgba(59,130,246,.15);
+
 
     /* ── Brand blue ── */
-    --brand: #2563EB;
-    --brand-deep: #1E40AF;
-    --brand-light: #3B82F6;
-    --brand-cyan: #06B6D4;
+   --brand: #0088FF;
+  --brand-light: #3BA8FF;
+  --brand-deep: #005ED9;
+  --brand-cyan: #00D4FF;
 
     --header-h: 80px;
+
+    /* Font */
+    --font-pt-sans: 'PT Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   }
 
   * {
@@ -66,7 +100,13 @@
     color: var(--fg);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     background-color: var(--bg);
-    /* No fixed gradient mesh — sections paint their own backgrounds */
+    background-image:
+      radial-gradient(circle at 8% 8%, rgba(59, 130, 246, 0.14), transparent 28rem),
+      radial-gradient(circle at 92% 26%, rgba(0, 212, 255, 0.10), transparent 32rem),
+      linear-gradient(135deg, #030712 0%, #071a35 52%, #051a35 100%);
+    background-attachment: fixed;
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+    font-family: var(--font-pt-sans);
   }
 
   ::selection {
@@ -100,6 +140,7 @@
     @apply font-display tracking-tight;
     text-wrap: balance;
     letter-spacing: -0.02em;
+    font-family: 'Playfair Display', var(--font-pt-sans);
   }
 
   :focus-visible {
@@ -120,54 +161,89 @@
 
   .section-dark {
     @apply relative;
-    background-color: var(--bg);
+    background:
+      radial-gradient(circle at 15% 10%, rgba(6,182,212,.25), transparent 35%),
+      radial-gradient(circle at 85% 5%, rgba(34,211,238,.20), transparent 40%),
+      linear-gradient(
+        180deg,
+        #030712 0%,
+        #0a1f35 35%,
+        #051a35 100%
+      );
     color: var(--fg);
   }
 
   .section-navy {
-    @apply relative;
-    background: linear-gradient(180deg, var(--bg-navy) 0%, #0F1629 100%);
-    color: var(--fg);
-  }
+  position: relative;
+  color: var(--fg);
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(34,211,238,.18), transparent 35%),
+    radial-gradient(circle at 80% 10%, rgba(59,130,246,.22), transparent 40%),
+    linear-gradient(
+      180deg,
+      #030712 0%,
+      #071A36 40%,
+      #0B2B55 70%,
+      #103A72 100%
+    );
+}
 
   .section-light {
     @apply relative;
-    background-color: var(--light-bg);
+    background:
+      radial-gradient(circle at 12% 8%, rgba(59, 130, 246, 0.07), transparent 30rem),
+      linear-gradient(135deg, #ffffff 0%, #f7fbff 52%, #ffffff 100%);
     color: var(--fg-on-light);
   }
 
   .section-light-grey {
     @apply relative;
-    background-color: var(--light-bg-grey);
+    background:
+      radial-gradient(circle at 88% 18%, rgba(0, 212, 255, 0.06), transparent 28rem),
+      linear-gradient(135deg, #f8fafc 0%, #eef6ff 52%, #f8fafc 100%);
     color: var(--fg-on-light);
   }
 
   .section-gradient-cta {
-    @apply relative overflow-hidden;
-    background: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand-light) 50%, var(--brand-cyan) 100%);
-    background-size: 200% 200%;
-    animation: gradient-shift 8s ease-in-out infinite;
-    color: #ffffff;
-  }
+    position:relative;
+    overflow:hidden;
+    color:#000;
+
+    background:#ffffff;
+
+    background-size:200% 200%;
+    animation:none;
+}
 
   .section-footer {
-    @apply relative;
-    background: linear-gradient(180deg, #050508 0%, #0A0A0A 40%, #0A0A0A 100%);
-    color: var(--fg);
-  }
 
+background:
+linear-gradient(
+180deg,
+#08111F 0%,
+#040B18 55%,
+#000000 100%
+);
+
+color:#fff;
+}
 
   /* ═══════════════════════════════════════════════
      Card surfaces — Dark Mode (on dark backgrounds)
      ═══════════════════════════════════════════════ */
 
   .glass {
-    background: rgba(17, 22, 42, 0.72);
-    backdrop-filter: blur(12px) saturate(130%);
-    -webkit-backdrop-filter: blur(12px) saturate(130%);
-    border: 1px solid var(--line);
-  }
 
+background:rgba(11,30,56,.75);
+
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(120,170,255,.15);
+
+box-shadow:0 20px 50px rgba(0,0,0,.30);
+
+}
   .glass-strong {
     background: rgba(22, 28, 51, 0.82);
     backdrop-filter: blur(14px) saturate(140%);
@@ -185,6 +261,32 @@
     -webkit-backdrop-filter: blur(12px) saturate(130%);
     border: 1px solid var(--light-line);
     box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  /* Force text and icon color to black inside light-themed cards where required */
+  .section-light .glass,
+  .section-light .glass * {
+    color: #000 !important;
+  }
+
+  .section-light .glass svg {
+    stroke: #000 !important;
+    fill: #000 !important;
+  }
+
+  /* Ensure Tailwind utility classes used in light sections render black here */
+  .section-light .text-fg-dark,
+  .section-light .text-fg-dark-muted,
+  .section-light .text-fg-dark-subtle,
+  .section-light .text-brand,
+  .section-light .text-fg-dark-subtle {
+    color: #000 !important;
+  }
+
+  .section-light .text-brand svg,
+  .section-light .text-fg-dark svg {
+    stroke: #000 !important;
+    fill: #000 !important;
   }
 
   .glass-light:hover {
@@ -319,6 +421,10 @@
 
 .marquee-track {
   animation: marquee 45s linear infinite;
+  will-change: transform;
+  display: inline-flex;
+  align-items: center;
+  gap: 3.5rem;
 }
 
 .marquee-track:hover {
@@ -336,3 +442,8 @@
     scroll-behavior: auto !important;
   }
 }
+
+  /* Premium heading/font helper */
+  .premium-font {
+    font-family: 'Playfair Display', var(--font-pt-sans);
+  }

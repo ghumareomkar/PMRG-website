@@ -32,7 +32,7 @@ export default function ServicesGrid() {
               <Link href={`/solutions/${product.slug}`} className="group block h-full">
                 <GlassCard theme="light" className="flex h-full flex-col p-7">
                   <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-light-line bg-blue-50 text-brand transition-colors duration-200 group-hover:border-brand/40 group-hover:bg-blue-100 group-hover:text-brand-deep">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-light-line bg-blue-50 text-black transition-colors duration-200 group-hover:border-black/20 group-hover:bg-blue-50 group-hover:text-black">
                       <Icon name={product.icon} className="h-5 w-5" />
                     </span>
                     <span className="rounded-full border border-brand/20 bg-brand-soft px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-brand">
@@ -40,10 +40,10 @@ export default function ServicesGrid() {
                     </span>
                   </div>
 
-                  <h3 className="mt-5 text-base font-semibold text-fg-dark leading-snug">{product.name}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-fg-dark-muted">{product.description}</p>
+                  <h3 className="mt-5 text-base font-semibold text-black leading-snug">{product.name}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-black">{product.description}</p>
 
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-fg-dark-subtle transition-colors group-hover:text-brand">
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-black transition-colors group-hover:text-black">
                     Learn more
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </span>
